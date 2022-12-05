@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import {
-  FaGoogle,
-  FaGithub,
-  FaFacebook,
-  FaJava,
-  FaLaptopCode,
-  FaAngular,
-  FaPython,
-  FaHtml5,
-  FaContao,
-} from "react-icons/fa";
+import { FaGoogle, FaGithub, FaFacebook } from "react-icons/fa";
 
 const LeftSideNav = () => {
   const [categories, setCategories] = useState([]);
@@ -24,7 +14,7 @@ const LeftSideNav = () => {
   }, []);
 
   return (
-    <div>
+    <div className="mt-5">
       <h2>Courses Categories: {categories.length}</h2>
 
       <div className="p-3">

@@ -2,20 +2,24 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import { CardGroup } from "react-bootstrap";
 
 const CourseSummaryCard = ({ course }) => {
+  const { img, title, description, price, instructor } = course;
   return (
-    <Row xs={1} md={2} className="g-2 mt-3">
-      <Col>
-        <Card>
-          <Card.Img variant="top" src={course.img} />
-          <Card.Body>
-            <Card.Title>{course.title}</Card.Title>
-            <Card.Text>{course.description}</Card.Text>
-          </Card.Body>
-        </Card>
-      </Col>
-    </Row>
+    <Col>
+      <CardGroup className="h-100 border rounded">
+        <Card.Img variant="top" src={img} />
+        <Card.Body className="px-2">
+          <Card.Title className="text-success">{title}</Card.Title>
+          <Card.Text>{description}</Card.Text>
+          <Button variant="primary" className="w-100">
+            Course Details
+          </Button>
+        </Card.Body>
+      </CardGroup>
+    </Col>
   );
 };
 
