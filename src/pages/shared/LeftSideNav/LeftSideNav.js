@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub, FaFacebook } from "react-icons/fa";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const LeftSideNav = () => {
+  const { providerLogin } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
   const [categories, setCategories] = useState([]);
   // console.log(categories);
 
@@ -12,6 +16,15 @@ const LeftSideNav = () => {
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .then((error) => console.log(error));
+  };
 
   return (
     <div className="mt-5">
@@ -28,7 +41,17 @@ const LeftSideNav = () => {
           </p>
         ))}
         <div className="">
-          <Button variant="success" className="w-100 fs-5 mt-3">
+          <Link to="/">
+            <Button variant="outline-success" className="w-100 fs-5">
+              All Courses
+            </Button>
+          </Link>
+
+          <Button
+            onClick={handleGoogleSignIn}
+            variant="success"
+            className="w-100 fs-5 mt-3"
+          >
             Login With Google <FaGoogle className="ms-2"></FaGoogle>
           </Button>
           <Button variant="primary" className="w-100 fs-5 my-2">

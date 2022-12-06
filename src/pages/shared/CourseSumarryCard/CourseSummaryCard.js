@@ -12,7 +12,7 @@ const CourseSummaryCard = ({ course }) => {
   return (
     <Col className="mt-5">
       <CardGroup className="h-100 border rounded">
-        <Card.Img fluid variant="top" src={img} />
+        <Card.Img variant="top" src={img} />
         <Card.Body className="px-2">
           <Card.Title className="text-success my-2 text-start fs-4">
             {title}

@@ -6,7 +6,7 @@ const Courses = () => {
   const singleCourse = useLoaderData();
   const { id, title, price, course, description, instructor, img } =
     singleCourse;
-  console.log(singleCourse);
+  // console.log(singleCourse);
   return (
     <Row className="d-flex align-items-center justify-content-center mt-5">
       <Card style={{ width: "38rem" }}>
