@@ -19,8 +19,8 @@ const Header = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto text-white">
             <Nav.Link href="#pricing" className="text-white fs-5">
-              <Link to="/courses" className="text-white">
-                Courses
+              <Link to="/allcourses" className="text-white">
+                AllCourses
               </Link>
             </Nav.Link>
             <Nav.Link href="#pricing" className="text-white fs-5">

@@ -10,7 +10,7 @@ import Image from "react-bootstrap";
 const CourseSummaryCard = ({ course }) => {
   const { id, img, title, description, price, instructor } = course;
   return (
-    <Col>
+    <Col className="mt-5">
       <CardGroup className="h-100 border rounded">
         <Card.Img fluid variant="top" src={img} />
         <Card.Body className="px-2">
@@ -19,10 +19,7 @@ const CourseSummaryCard = ({ course }) => {
           </Card.Title>
           <Card.Text className="fs-5 text-start">
             {description.length > 100 ? (
-              <p>
-                {description.slice(0, 120) + "..."}{" "}
-                <Link to={`/courses/${id}`}>Read More..</Link>
-              </p>
+              <p>{description.slice(0, 120) + "..."} </p>
             ) : (
               <p>{description}</p>
             )}
@@ -31,8 +28,10 @@ const CourseSummaryCard = ({ course }) => {
             <span className="p-0 m-0">instructor: {instructor}</span>
             <span className="p-0 m-0 ">${price}</span>
           </div>
-          <Button variant="success" className="w-100">
-            Course Details
+          <Button variant="success" className="w-100 text-white">
+            <Link className="text-white fs-5 fw-semibold" to={`/courses/${id}`}>
+              Course Details
+            </Link>
           </Button>
         </Card.Body>
       </CardGroup>

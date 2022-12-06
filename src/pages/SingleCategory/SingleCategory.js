@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 
 const SingleCategory = ({ category }) => {
   const { id, title, price, course, description, img } = category;
-  console.log(category);
+  // console.log(category);
   return (
     <Row className="d-flex align-items-center justify-content-center mt-5">
       <Card style={{ width: "38rem" }}>
