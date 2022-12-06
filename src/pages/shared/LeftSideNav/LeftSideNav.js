@@ -5,7 +5,7 @@ import { FaGoogle, FaGithub, FaFacebook } from "react-icons/fa";
 
 const LeftSideNav = () => {
   const [categories, setCategories] = useState([]);
-  console.log(categories);
+  // console.log(categories);
 
   useEffect(() => {
     fetch("http://localhost:5000/course-category")

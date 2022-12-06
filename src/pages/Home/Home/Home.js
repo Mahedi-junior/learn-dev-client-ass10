@@ -11,7 +11,7 @@ const Home = () => {
       {/* <CarouselBanner></CarouselBanner> */}
       <h2>Learn Dev Courses: {allCourses.length}</h2>
 
-      <Row xs={1} md={2} lg={2} className="gy-4 ">
+      <Row xs={1} md={2} lg={2} className="gy-4 mx-3">
         {allCourses.map((course) => (
           <CourseSummaryCard
             key={course.id}

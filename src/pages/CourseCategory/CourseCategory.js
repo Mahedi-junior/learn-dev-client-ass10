@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import SingleCategory from "../SingleCategory/SingleCategory";
 
 const CourseCategory = () => {
-  const course = useLoaderData();
-  // console.log(course);
+  const categoryCourse = useLoaderData();
+  // console.log(categoryCourse);
   return (
     <div>
-      <h2>This is Course Category: {course.length}</h2>
+      <h2>This is Course Category: {categoryCourse.length}</h2>
+
+      {categoryCourse.map((category) => (
+        <SingleCategory key={category.id} category={category}></SingleCategory>
+      ))}
     </div>
   );
 };
