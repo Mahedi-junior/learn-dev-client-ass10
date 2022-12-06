@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import SocialLogin from "../../shared/SocialLogin/SocialLogin";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -71,6 +72,7 @@ const Register = () => {
       <Form.Text className="text-danger d-none">
         We'll never share your email with anyone else.
       </Form.Text>
+      <SocialLogin></SocialLogin>
     </Form>
   );
 };

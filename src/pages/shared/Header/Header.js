@@ -56,7 +56,7 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <Link to="/login" className="text-white">
+                  <Link to="/login">
                     <Button
                       className="rounded mx-2 fw-semibold px-3 fs-5"
                       variant="outline-info"
@@ -65,7 +65,7 @@ const Header = () => {
                     </Button>
                   </Link>
 
-                  <Link to="/register" className="text-white ">
+                  <Link to="/register">
                     <Button
                       className="rounded mx-2 fw-semibold px-2 fs-5"
                       variant="outline-info"
