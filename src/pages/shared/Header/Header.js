@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { FaMoon, FaSun, FaUser } from "react-icons/fa";
+import logo from "../../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import "./Header.css";
@@ -25,7 +26,18 @@ const Header = () => {
     <Navbar collapseOnSelect expand="lg" bg="success" variant="dark">
       <Container>
         <Navbar.Brand>
-          <Link to="/" className="text-white">
+          <Link to="/">
+            <Image
+              src={logo}
+              style={{ width: "110px" }}
+              className="me-2 rounded mb-2"
+            ></Image>
+          </Link>
+
+          <Link
+            to="/"
+            className="text-white fw-semibold fs-3 text-decoration-none "
+          >
             Learn-Dev
           </Link>
         </Navbar.Brand>
@@ -33,18 +45,30 @@ const Header = () => {
 
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto text-white">
-            <Nav.Link href="#pricing" className="text-white fs-5">
-              <Link to="/allcourses" className="text-white">
+            <Nav.Link className="text-white fs-5">
+              <Link
+                to="/allcourses"
+                className="text-white fw-semibold text-decoration-none"
+              >
                 AllCourses
               </Link>
             </Nav.Link>
+
             <Nav.Link className="text-white fs-5">
-              <Link to="/blog" className="text-white">
+              <Link
+                to="/blog"
+                className="text-white fw-semibold text-decoration-none"
+              >
                 Blog
               </Link>
             </Nav.Link>
-            <Nav.Link href="#pricing" className="text-white fs-5">
-              FAQ
+            <Nav.Link className="text-white fs-5">
+              <Link
+                to="/"
+                className="text-white fw-semibold text-decoration-none"
+              >
+                FAQ
+              </Link>
             </Nav.Link>
           </Nav>
           <Nav>
