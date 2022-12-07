@@ -14,14 +14,14 @@ const CourseSummaryCard = ({ course }) => {
       <CardGroup className="h-100 border rounded">
         <Card.Img variant="top" src={img} />
         <Card.Body className="px-2">
-          <Card.Title className="text-success my-2 text-start fs-4">
+          <Card.Title className="text-success my-2 text-start fs-5">
             {title}
           </Card.Title>
-          <Card.Text className="fs-5 text-start">
+          <Card.Text className="text-start">
             {description.length > 100 ? (
-              <p>{description.slice(0, 120) + "..."} </p>
+              <>{description.slice(0, 120) + "..."} </>
             ) : (
-              <p>{description}</p>
+              <>{description}</>
             )}
           </Card.Text>
           <div className=" d-flex fs-5 mb-2 fw-semibold align-items-center justify-content-between px-2 ">

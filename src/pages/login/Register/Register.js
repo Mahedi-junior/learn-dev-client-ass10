@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import SocialLogin from "../../shared/SocialLogin/SocialLogin";
@@ -8,7 +9,8 @@ const Register = () => {
   const [error, setError] = useState("");
   const [accepted, setAccepted] = useState(false);
 
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, verifyEmail } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,6 +29,8 @@ const Register = () => {
         form.reset();
         navigate("/");
         handleUpdateUserProfile(name, photoURL);
+        handleEmailVerification();
+        toast.success("Please Verify Your Email Address");
       })
       .catch((error) => {
         setError(error.message);
@@ -38,13 +42,20 @@ const Register = () => {
       displayName: name,
       photoURL: photoURL,
     };
+
     updateUserProfile(profile)
       .then(() => {})
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   };
 
   const handleAccepted = (event) => {
     setAccepted(event.target.checked);
+  };
+
+  const handleEmailVerification = () => {
+    verifyEmail()
+      .then(() => {})
+      .catch((error) => console.error(error));
   };
 
   return (
