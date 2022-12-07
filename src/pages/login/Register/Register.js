@@ -1,21 +1,23 @@
 import React, { useContext, useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import SocialLogin from "../../shared/SocialLogin/SocialLogin";
 
 const Register = () => {
   const [error, setError] = useState("");
+  const [accepted, setAccepted] = useState(false);
 
-  const { createUser } = useContext(AuthContext);
-
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
-    const PhotoURL = form.PhotoURL.value;
+    const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, PhotoURL, password);
+    // console.log(name, email, PhotoURL, password);
 
     createUser(email, password)
       .then((result) => {
@@ -23,10 +25,26 @@ const Register = () => {
         console.log(user);
         setError("");
         form.reset();
+        navigate("/");
+        handleUpdateUserProfile(name, photoURL);
       })
       .catch((error) => {
         setError(error.message);
       });
+  };
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
+  const handleAccepted = (event) => {
+    setAccepted(event.target.checked);
   };
 
   return (
@@ -44,7 +62,7 @@ const Register = () => {
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Photo URL</Form.Label>
-        <Form.Control name="PhotoURL" type="text" placeholder="Photo URL" />
+        <Form.Control name="photoURL" type="text" placeholder="Photo URL" />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -67,9 +85,23 @@ const Register = () => {
         />
       </Form.Group>
       <Form.Text className="text-danger ">{error}</Form.Text>
+
+      <Form.Group className="m-2 " id="formGridCheckbox">
+        <Form.Check
+          onClick={handleAccepted}
+          type="checkbox"
+          label={
+            <>
+              Accepts <Link to="/terms">Terms and Conditions</Link>
+            </>
+          }
+        />
+      </Form.Group>
+
       <Button
         variant="outline-success"
         type="submit"
+        disabled={!accepted}
         className="w-75 mx-auto d-flex justify-content-center fs-4 mt-3 fw-semibold"
       >
         Register

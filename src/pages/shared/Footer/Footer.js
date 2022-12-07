@@ -1,9 +1,10 @@
 import React from "react";
+import "./Footer.css";
 
 const Footer = () => {
   return (
-    <div>
-      <h2>This is Footer Components</h2>
+    <div className="footer mt-5">
+      <h2 className="text-white text-center">This is Footer Components</h2>
     </div>
   );
 };

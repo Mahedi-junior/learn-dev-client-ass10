@@ -5,14 +5,14 @@ import banner2 from "../../../assets/images/banner2.jpg";
 const CarouselBanner = () => {
   return (
     <Carousel>
-      <Carousel.Item interval={1000}>
+      <Carousel.Item interval={3000}>
         <img className="d-block w-100" src={banner2} alt="First slide" />
         <Carousel.Caption>
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item interval={500}>
+      <Carousel.Item interval={3000}>
         <img className="d-block w-100" src={banner1} alt="Second slide" />
         <Carousel.Caption>
           <h3>Second slide label</h3>

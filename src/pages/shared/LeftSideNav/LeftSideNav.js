@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import CarouselBanner from "../Carousel/CarouselBanner";
 
 const LeftSideNav = () => {
   const [categories, setCategories] = useState([]);
@@ -26,13 +27,14 @@ const LeftSideNav = () => {
             </Link>
           </p>
         ))}
-        <div className="">
+        <div className="mb-3">
           <Link to="/">
             <Button variant="success" className="w-100 fs-5">
               All Courses
             </Button>
           </Link>
         </div>
+        <CarouselBanner></CarouselBanner>
       </div>
     </div>
   );

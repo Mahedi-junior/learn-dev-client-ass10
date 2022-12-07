@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Card, Row } from "react-bootstrap";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -11,6 +11,7 @@ const Courses = () => {
   // console.log(singleCourse);
   const buyNow = () => {
     toast.success("Thank You For Your Purchase!", {
+      className: "mt-2 fs-5 mx-2",
       position: "top-center",
       autoClose: 2000,
       hideProgressBar: false,
@@ -37,13 +38,15 @@ const Courses = () => {
             Instructor:{" "}
             <span className="text-primary fw-semibold">{instructor}</span>
           </p>
-          <Button
-            onClick={buyNow}
-            variant="outline-success"
-            className="w-100 fs-5 fw-semibold"
-          >
-            Buy Now
-          </Button>
+          <Link>
+            <Button
+              onClick={buyNow}
+              variant="outline-success"
+              className="w-100 fs-5 fw-semibold"
+            >
+              Buy Now
+            </Button>
+          </Link>
         </Card.Body>
         <ToastContainer></ToastContainer>
       </Card>
