@@ -7,6 +7,7 @@ import Blog from "../../pages/Home/Blog/Blog";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/login/Login/Login";
 import Register from "../../pages/login/Register/Register";
+import NotFound from "../../pages/Others/NotFound/NotFound";
 import TermsAndConditions from "../../pages/Others/TermsAndConditions/TermsAndConditions";
 import PurchaseCourse from "../../pages/shared/PurchaseCourse/PurchaseCourse";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -65,5 +66,9 @@ export const routes = createBrowserRouter([
         element: <TermsAndConditions></TermsAndConditions>,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound></NotFound>,
   },
 ]);

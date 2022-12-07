@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import toast from "react-hot-toast";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import SocialLogin from "../../shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const [error, setError] = useState("");
-  const { signIn } = useContext(AuthContext);
+  const { signIn, setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -35,6 +35,9 @@ const Login = () => {
       })
       .catch((error) => {
         setError(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -66,6 +69,9 @@ const Login = () => {
         />
       </Form.Group>
       <Form.Text className="text-danger">{error}</Form.Text>
+      <Form.Text className="text-danger">
+        New to learn dev ? Please <Link to="/register">register</Link>{" "}
+      </Form.Text>
       <Button
         variant="outline-success"
         type="submit"

@@ -70,6 +70,7 @@ const AuthProvider = ({ children }) => {
     signIn,
     updateUserProfile,
     verifyEmail,
+    setLoading,
   };
 
   return (

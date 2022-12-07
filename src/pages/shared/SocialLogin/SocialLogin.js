@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub, FaFacebook } from "react-icons/fa";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const SocialLogin = () => {
   const { providerLogin } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
@@ -16,6 +17,15 @@ const SocialLogin = () => {
         console.log(user);
       })
       .then((error) => console.log(error));
+  };
+
+  const handleGithubSignIn = () => {
+    providerLogin(githubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
   };
   return (
     <div>
@@ -29,7 +39,11 @@ const SocialLogin = () => {
       <Button variant="primary" className="w-100 fs-5 my-2">
         Login With FaceBook <FaFacebook className="ms-2"></FaFacebook>
       </Button>
-      <Button variant="danger" className="w-100 fs-5 ">
+      <Button
+        onClick={handleGithubSignIn}
+        variant="danger"
+        className="w-100 fs-5 "
+      >
         Login With Github <FaGithub className="ms-2"></FaGithub>
       </Button>
     </div>

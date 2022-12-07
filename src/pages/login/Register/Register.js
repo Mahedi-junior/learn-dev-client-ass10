@@ -95,6 +95,11 @@ const Register = () => {
           required
         />
       </Form.Group>
+      <Form.Text className="text-danger px-2">
+        <>
+          Already have an account ? Please <Link to="/login">Login</Link>{" "}
+        </>
+      </Form.Text>
       <Form.Text className="text-danger ">{error}</Form.Text>
 
       <Form.Group className="m-2 " id="formGridCheckbox">
