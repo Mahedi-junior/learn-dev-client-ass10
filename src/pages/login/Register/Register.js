@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import SocialLogin from "../../shared/SocialLogin/SocialLogin";
 
 const Register = () => {
+  const [error, setError] = useState("");
+
   const { createUser } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
@@ -19,8 +21,12 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setError("");
+        form.reset();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setError(error.message);
+      });
   };
 
   return (
@@ -51,7 +57,7 @@ const Register = () => {
         />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control
           name="password"
@@ -60,18 +66,15 @@ const Register = () => {
           required
         />
       </Form.Group>
-
+      <Form.Text className="text-danger ">{error}</Form.Text>
       <Button
         variant="outline-success"
         type="submit"
-        className="w-75 mx-auto d-flex justify-content-center fs-4 fw-semibold"
+        className="w-75 mx-auto d-flex justify-content-center fs-4 mt-3 fw-semibold"
       >
         Register
       </Button>
 
-      <Form.Text className="text-danger d-none">
-        We'll never share your email with anyone else.
-      </Form.Text>
       <SocialLogin></SocialLogin>
     </Form>
   );

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import SocialLogin from "../../shared/SocialLogin/SocialLogin";
 
@@ -8,6 +8,9 @@ const Login = () => {
   const [error, setError] = useState("");
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,7 +23,7 @@ const Login = () => {
         console.log(user);
         form.reset();
         setError("");
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);
@@ -45,7 +48,7 @@ const Login = () => {
         />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control
           name="password"
@@ -54,18 +57,15 @@ const Login = () => {
           required
         />
       </Form.Group>
-
+      <Form.Text className="text-danger">{error}</Form.Text>
       <Button
         variant="outline-success"
         type="submit"
-        className="w-75 mx-auto d-flex justify-content-center fs-4 fw-semibold"
+        className="w-75 mx-auto d-flex justify-content-center fs-4 fw-semibold mt-3"
       >
         Login
       </Button>
 
-      <Form.Text className="text-danger d-none">
-        We'll never share your email with anyone else.
-      </Form.Text>
       <SocialLogin></SocialLogin>
     </Form>
   );

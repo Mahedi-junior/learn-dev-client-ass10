@@ -1,14 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { FaUser } from "react-icons/fa";
+import { FaMoon, FaSun, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import "./Header.css";
 
 const Header = () => {
+  const [state, setState] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+
+  const toggle = () => {
+    setState(!state);
+  };
 
   const handleLogOut = () => {
     logOut()
@@ -45,11 +51,11 @@ const Header = () => {
             <Nav.Link className="text-white">
               {user?.uid ? (
                 <>
-                  <span className="fs-5">{user?.displayName}</span>
+                  <span className="fs-5 me-2">{user?.displayName}</span>
                   <Button
                     onClick={handleLogOut}
                     variant="outline-warning"
-                    className="rounded mx-3 fw-semibold "
+                    className="rounded  fw-semibold "
                   >
                     Log Out
                   </Button>
@@ -67,7 +73,7 @@ const Header = () => {
 
                   <Link to="/register">
                     <Button
-                      className="rounded mx-2 fw-semibold px-2 fs-5"
+                      className="rounded ms-2 fw-semibold px-2 fs-5"
                       variant="outline-info"
                     >
                       Register
@@ -86,9 +92,20 @@ const Header = () => {
                   ></Image>
                 </>
               ) : (
-                <FaUser></FaUser>
+                <FaUser className="fs-2 text-info mt-1"></FaUser>
               )}
             </Nav.Link>
+
+            <button
+              onClick={toggle}
+              className={"toggle-button " + (state ? "toggle-close" : " ")}
+            >
+              {state ? (
+                <FaSun className="fs-4 me-3"></FaSun>
+              ) : (
+                <FaMoon className="mb-1 fs-4"></FaMoon>
+              )}
+            </button>
           </Nav>
         </Navbar.Collapse>
       </Container>

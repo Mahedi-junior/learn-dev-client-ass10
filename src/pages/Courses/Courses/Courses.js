@@ -1,12 +1,27 @@
 import React from "react";
 import { Button, Card, Row } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Courses = () => {
   const singleCourse = useLoaderData();
   const { id, title, price, course, description, instructor, img } =
     singleCourse;
   // console.log(singleCourse);
+  const buyNow = () => {
+    toast.success("Thank You For Your Purchase!", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
   return (
     <Row className="d-flex align-items-center justify-content-center mt-5">
       <Card style={{ width: "38rem" }}>
@@ -22,10 +37,15 @@ const Courses = () => {
             Instructor:{" "}
             <span className="text-primary fw-semibold">{instructor}</span>
           </p>
-          <Button variant="success" className="w-100 fs-5 fw-semibold">
+          <Button
+            onClick={buyNow}
+            variant="outline-success"
+            className="w-100 fs-5 fw-semibold"
+          >
             Buy Now
           </Button>
         </Card.Body>
+        <ToastContainer></ToastContainer>
       </Card>
     </Row>
   );

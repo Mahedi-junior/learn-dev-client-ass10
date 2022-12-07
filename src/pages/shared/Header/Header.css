@@ -1,0 +1,20 @@
+.toggle-button {
+  background: rgb(23, 23, 23);
+  color: rgb(242, 239, 239);
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  margin-top: 10px;
+  border-radius: 20%;
+  outline: 3px solid rgb(104, 129, 129);
+}
+.toggle-close {
+  background: rgb(255, 255, 255);
+  color: rgb(35, 35, 35);
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  margin-top: 10px;
+  border-radius: 20%;
+  outline: 3px solid rgb(201, 200, 199);
+}
